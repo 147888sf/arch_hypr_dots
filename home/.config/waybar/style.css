@@ -47,10 +47,10 @@ window#waybar {
 
 
 #workspaces {
-    margin: 6px 0px 6px 6px;
+    margin: 4px 0px 4px 4px;
     padding: 2px;
     background: rgba(0,0,0,0.3);
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 #workspaces button {
@@ -59,7 +59,7 @@ window#waybar {
     background: @accent1;
     color: @text;
     transition: all 0.25s ease-out;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 #workspaces button:hover {
