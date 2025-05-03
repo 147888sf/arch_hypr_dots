@@ -19,7 +19,7 @@
 
 window#waybar {
     background: rgba(0,0,0,0.4);
-    border-radius: 0px 0px 14px 14px;
+    border-radius: 0px 0px 16px 16px;
 }
 
 #clock,
@@ -34,7 +34,7 @@ window#waybar {
     padding: 2px 8px;
     min-width: 12px;
     background-color: @accent;
-    border-radius: 8px;
+    border-radius: 10px;
     color: @text;
 }
 
@@ -49,16 +49,16 @@ window#waybar {
     margin: 6px 0px 6px 6px;
     padding: 2px;
     background: rgba(0,0,0,0.3);
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 #workspaces button {
     padding: 0px 4px;
-    margin: 4px 3px;
+    margin: 3px 2px;
     background: @accent1;
     color: @text;
     transition: all 0.25s ease-out;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 #workspaces button:hover {
