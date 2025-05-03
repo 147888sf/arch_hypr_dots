@@ -9,11 +9,11 @@
     "margin-left": 12,
 
     "modules-left": [
-        
+        "hyprland/workspaces"
     ],
 
     "modules-center": [
-        "hyprland/workspaces"
+        
     ],
 
     "modules-right": [
@@ -22,7 +22,8 @@
         "custom/swaync",
         "battery",
         "pulseaudio",
-        "clock"
+        "clock",
+        "custom/powermenu"
     ],
     
     "battery": {
@@ -97,7 +98,12 @@
     "custom/swaync": {
         "format": "",
         "on-click": "swaync-client -t",
-        "tooltip": false,
-        "on-click-right": "swaync-client -c -sw"
+        "tooltip": false
+    },
+    
+    "custom/powermenu": {
+        "format": "",
+        "on-click": "/home/vova_4104/.config/rofi/powermenu.sh",
+        "tooltip": false
     }
 }
