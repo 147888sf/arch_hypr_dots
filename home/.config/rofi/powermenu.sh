@@ -12,7 +12,7 @@ case "$chosen" in
     "Sleep") 
         systemctl sleep ;;
     "Hibernate")
-        systemctl hibernate
+        systemctl hibernate ;;
     "Lock") 
         exec hyprlock ;;
 esac
