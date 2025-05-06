@@ -83,4 +83,4 @@ def install_packages(selected_drivers, do_ly_dm):
 	aur_parsed = ' '.join(packages['Aur'])
 
 	os.system(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
-	os.system(f'paru -Sy && paru -S --noconfirm {aur_parsed}')
+	os.system(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
