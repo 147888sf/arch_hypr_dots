@@ -14,7 +14,6 @@ setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
 alias ls='ls --color=auto'
-alias la='ls -a'
 alias grep='grep --color=auto'
 
 autoload -U compinit
