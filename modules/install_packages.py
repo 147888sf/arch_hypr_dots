@@ -57,7 +57,10 @@ def install_packages(selected_drivers, do_ly_dm):
 			'slurp',
 			'swappy',
 			'playerctl',
-			'libnotify'
+			'libnotify',
+			'zsh',
+			'zsh-syntax-highlighting',
+			'zsh-autosuggestions'
 		],
 
 		'Aur': [

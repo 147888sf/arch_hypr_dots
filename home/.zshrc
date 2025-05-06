@@ -1,0 +1,20 @@
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
+bindkey "^[[3~" delete-char
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
+
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+setopt hist_ignore_all_dups
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+autoload -U compinit
+compinit
+
+fastfetch
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/custom_config.omp.json)"
