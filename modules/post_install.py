@@ -23,7 +23,7 @@ def post_install(do_reboot, do_ly_dm):
 
 
 	# Walpaper set
-	image = f'{home}/Wallpapers/snow_forest.jpg'
+	image = f'{home}/Wallpapers/urban.png'
 
 	os.system(f'wal -i {image}')
 
