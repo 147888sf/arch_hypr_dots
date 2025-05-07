@@ -1,5 +1,5 @@
 configuration {
-    modi:                       "drun,filebrowser";
+    modi:                       "drun";
     font:                       "Noto Sans 11";
     show-icons:                 true;
     display-drun:                " 󱂬 ";
