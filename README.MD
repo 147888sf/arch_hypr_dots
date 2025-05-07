@@ -54,6 +54,8 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 - Intel ✅ (not tested)
 
 # Screenshots
+> Please note that screenshots may be outdated. Everythin is a subject to change
+
 ![desktop_urban.png](https://images2.imgbox.com/51/f4/JZig00tO_o.png)
 ![terminal.png](https://images2.imgbox.com/00/86/92pRyzRm_o.png)
 ![rofi.png](https://images2.imgbox.com/fa/ff/VHNY7Sqs_o.png)
