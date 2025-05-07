@@ -19,7 +19,7 @@ def dialog(text: str, default_true: bool):
 
 drivers = {
     'Nvidia': [
-        'nvidia-dkms',
+        'nvidia',
         'nvidia-utils',
         'lib32-nvidia-utils',
         'vulkan-icd-loader',
