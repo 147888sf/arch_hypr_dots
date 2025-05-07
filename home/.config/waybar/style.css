@@ -1,7 +1,7 @@
 @import "$HOME/.cache/wal/colors-universal.css";
 
 @define-color text rgba(255,255,255,1);
-@define-color accent @color1;
+@define-color accent @color2;
 
 * {
     outline: none;
@@ -35,7 +35,7 @@ window#waybar {
     padding: 2px 8px;
     min-width: 12px;
     background-color: @accent;
-    border-radius: 10px;
+    border-radius: 6px 6px 10px 10px;
     color: @text;
 }
 
@@ -50,7 +50,7 @@ window#waybar {
     margin: 4px 0px 4px 4px;
     padding: 2px;
     background: rgba(0,0,0,0.3);
-    border-radius: 12px;
+    border-radius: 6px 6px 12px 12px;
 }
 
 #workspaces button {
@@ -59,7 +59,7 @@ window#waybar {
     background: @accent1;
     color: @text;
     transition: all 0.25s ease-out;
-    border-radius: 7px;
+    border-radius: 4px 4px 7px 7px;
 }
 
 #workspaces button:hover {

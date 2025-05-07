@@ -1,5 +1,6 @@
 {
-    "layer": "top",
+    "position": "top",
+    "layer": "bottom",
     "spacing": 0,
     "height": 40,
 
@@ -9,11 +10,11 @@
     "margin-left": 12,
 
     "modules-left": [
-        "hyprland/workspaces"
+        
     ],
 
     "modules-center": [
-        
+    	"hyprland/workspaces"
     ],
 
     "modules-right": [
@@ -103,7 +104,7 @@
     
     "custom/powermenu": {
         "format": "",
-        "on-click": "~/.config/rofi/powermenu.sh",
+        "on-click": "/home/vova_4104/.config/rofi/powermenu.sh",
         "tooltip": false
     }
 }
