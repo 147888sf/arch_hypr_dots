@@ -56,13 +56,14 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 # Screenshots
 > Please note that screenshots may be outdated. Everythin is a subject to change
 
-![desktop_urban.png](https://images2.imgbox.com/51/f4/JZig00tO_o.png)
-![terminal.png](https://images2.imgbox.com/00/86/92pRyzRm_o.png)
-![rofi.png](https://images2.imgbox.com/fa/ff/VHNY7Sqs_o.png)
-![notification_center.png](https://images2.imgbox.com/f7/2c/cnuaGhwn_o.png)
-![dekstop_forest_fog.png](https://images2.imgbox.com/4b/fa/Ox8Fdp4I_o.png)
-![desktop_forest_snow.png](https://images2.imgbox.com/85/12/L9RrcbHN_o.png)
-![desktop_forest_red.png](https://images2.imgbox.com/aa/cb/pCyCttJa_o.png)
+![all_together](https://images2.imgbox.com/97/4f/y731Xe6C_o.png)
+![kitty](https://images2.imgbox.com/d3/f5/x59T9FSw_o.png)
+![drun](https://images2.imgbox.com/7f/a4/hLoAOxvJ_o.png)
+![powermenu](https://images2.imgbox.com/09/3c/PKuRutR3_o.png)
+![urban](https://images2.imgbox.com/90/18/JrhFRlt7_o.png)
+![forest_fog](https://images2.imgbox.com/c7/79/rTBBB3N6_o.png)
+![forest_snow](https://images2.imgbox.com/da/3b/muh0WeBm_o.png)
+![forest_red](https://images2.imgbox.com/45/fb/ozzV7kQX_o.png)
 
 <hr>
 
