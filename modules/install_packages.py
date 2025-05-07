@@ -22,7 +22,6 @@ def install_packages(selected_drivers, do_ly_dm):
 			'gnome-disk-utility',
 			'gnome-text-editor',
 			'gnome-system-monitor',
-			'gnome-music',
 			'waybar',
 			'cliphist',
 			'wl-clipboard',
