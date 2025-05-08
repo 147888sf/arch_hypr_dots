@@ -72,7 +72,6 @@ while 1:
 do_ly_dm = dialog('Do you want to install Ly DM?', True)
 do_reboot = dialog('Do you want to reboot after install?', True)
 
-
 print(r'''
           ___         _        _ _ _                                 
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
