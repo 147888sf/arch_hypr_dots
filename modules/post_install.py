@@ -4,8 +4,8 @@ import os
 
 def cmdrun(command):
 	try:
-		return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
-	except:
+		return subprocess.run(command, shell=True, check=True, text=True)
+	except subprocess.CalledProcessError:
 		pass
 
 def post_install(do_reboot, do_ly_dm):

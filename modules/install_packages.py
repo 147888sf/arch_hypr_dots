@@ -2,8 +2,8 @@ import subprocess
 
 def cmdrun(command):
 	try:
-		return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
-	except:
+		return subprocess.run(command, shell=True, check=True, text=True)
+	except subprocess.CalledProcessError:
 		pass
 
 def install_packages(selected_drivers, do_ly_dm):
