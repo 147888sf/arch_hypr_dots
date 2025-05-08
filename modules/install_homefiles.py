@@ -1,4 +1,6 @@
-import pathlib, shutil, os
+import pathlib
+import shutil
+import os
 
 def install_homefiles():
 	file_dir = pathlib.Path(__file__).parent.parent.resolve()

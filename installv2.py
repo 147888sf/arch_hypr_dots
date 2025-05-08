@@ -1,6 +1,3 @@
-import os
-import pathlib
-import shutil
 from modules.install_packages import install_packages
 from modules.install_homefiles import install_homefiles
 from modules.post_install import post_install

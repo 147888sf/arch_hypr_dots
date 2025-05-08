@@ -1,4 +1,9 @@
-import os, pathlib
+import subprocess
+import pathlib
+import os
+
+def cmdrun(command):
+    return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
 
 def post_install(do_reboot, do_ly_dm):
 	file_dir = pathlib.Path(__file__).parent.resolve()
@@ -11,7 +16,7 @@ def post_install(do_reboot, do_ly_dm):
 
 	# Waybar config
 	if not os.access(waybar_css, os.R_OK | os.W_OK):
-		os.system(f'sudo chown $USER:$USER {waybar_css} && chmod 644 {waybar_css}')
+		cmdrun(f'sudo chown $USER:$USER {waybar_css} && chmod 644 {waybar_css}')
 
 	file = open(waybar_css, 'rb')
 	content = file.read().decode()
@@ -25,17 +30,17 @@ def post_install(do_reboot, do_ly_dm):
 	# Walpaper set
 	image = f'{home}/Wallpapers/urban.png'
 
-	os.system(f'wal -i {image}')
+	cmdrun(f'wal -i {image}')
 
 	if not os.access(wallpapers_conf, os.R_OK | os.W_OK):
-		os.system(f'sudo chown $USER:$USER {wallpapers_conf} && chmod 644 {wallpapers_conf}')
+		cmdrun(f'sudo chown $USER:$USER {wallpapers_conf} && chmod 644 {wallpapers_conf}')
 
 	file = open(wallpapers_conf,'wb')
 	file.write(f'$wallpaper = {image}'.encode())
 	file.close()
 
 	if not os.access(hyprpaper_conf, os.R_OK | os.W_OK):
-		os.system(f'sudo chown $USER:$USER {hyprpaper_conf} && chmod 644 {hyprpaper_conf}')
+		cmdrun(f'sudo chown $USER:$USER {hyprpaper_conf} && chmod 644 {hyprpaper_conf}')
 
 	file = open(hyprpaper_conf,'wb')
 	file.write(f'preload = {image}\nwallpaper = , {image}'.encode())
@@ -60,30 +65,30 @@ def post_install(do_reboot, do_ly_dm):
 
 
 	# Screenshare
-	os.system('sudo systemctl --user enable --now pipewire pipewire-pulse wireplumber')
+	cmdrun('sudo systemctl --user enable --now pipewire pipewire-pulse wireplumber')
 
 
 
 	# Network manager
-	os.system('sudo systemctl enable NetworkManager.service')
+	cmdrun('sudo systemctl enable NetworkManager.service')
 
 
 
 	# Default dark mode
-	os.system("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
-	os.system("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
-	os.system("gsettings set org.gnome.desktop.interface icon-theme Papirus")
-	os.system("gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 11'")
+	cmdrun("gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark")
+	cmdrun("gsettings set org.gnome.desktop.interface color-scheme prefer-dark")
+	cmdrun("gsettings set org.gnome.desktop.interface icon-theme Papirus")
+	cmdrun("gsettings set org.gnome.desktop.interface font-name 'Noto Sans Regular 11'")
 
 
 
 	# Ly dm
 
 	if do_ly_dm:
-		os.system('sudo systemctl enable ly')
+		cmdrun('sudo systemctl enable ly')
 
 
 
 	# Reboot
 	if do_reboot:
-		os.system('sudo reboot')
+		cmdrun('sudo reboot')

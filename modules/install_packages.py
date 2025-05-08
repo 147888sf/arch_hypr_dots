@@ -1,4 +1,7 @@
-import os
+import subprocess
+
+def cmdrun(command):
+    return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -49,6 +52,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'network-manager-applet',
 			'ntfs-3g',
 			'dosfstools',
+	
 			'fuse',
 			'ufw',
 			'grim',
@@ -79,5 +83,5 @@ def install_packages(selected_drivers, do_ly_dm):
 	pacman_parsed = ' '.join(packages['Pacman'])
 	aur_parsed = ' '.join(packages['Aur'])
 
-	os.system(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
-	os.system(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
+	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
+	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
