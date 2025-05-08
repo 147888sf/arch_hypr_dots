@@ -14,7 +14,7 @@ def cmdrun(command, cwd):
         pass
 
 def dialog(text: str, default_true: bool):
-    dialog = input(ff{text} ({'Y/n' if default_true else 'y/N'}): ')
+    dialog = input(f'{text} ({'Y/n' if default_true else 'y/N'}): ')
     if dialog.lower() == 'y':
         return True
     elif dialog == '':
