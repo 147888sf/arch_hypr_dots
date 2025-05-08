@@ -6,7 +6,7 @@ import subprocess
 
 def cmdrun(command, cwd):
     try:
-        if cwd:
+        if cwd != None:
             return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
         else:
             return subprocess.run(command, shell=True, check=True, text=True)
