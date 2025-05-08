@@ -84,6 +84,7 @@ print(r'''
                                          |___/  |_|                  
 ''')
 
+cmdrun('sudo rm -rf ~/paru-bin')
 cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
 cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
 cmdrun('sudo rm -rf ~/paru-bin')
