@@ -73,7 +73,7 @@ def post_install(do_reboot, do_ly_dm):
 
 
 	# Network manager
-	cmdrun('sudo systemctl enable NetworkManager.service')
+	cmdrun('sudo systemctl enable NetworkManager.service', os.path.expanduser('~'))
 
 
 
