@@ -21,25 +21,6 @@ sudo -v
 ) &
 PID=$!
 
-sleep 1
-
-
-
-cat << "EOF"
-          ___         _        _ _ _                                 
-         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
-          | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
-         |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
-                                         |___/  |_|                  
-EOF
-cd ~
-git clone --depth 1 https://aur.archlinux.org/paru-bin.git
-cd paru-bin
-makepkg -si --noconfirm
-cd ~
-sudo rm -rf paru-bin
-sleep 1
-
 cat << "EOF"
           ___         _        _ _ _                       _   _             
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __ _  _| |_| |_  ___ _ _  

@@ -2,11 +2,14 @@ import subprocess
 import pathlib
 import os
 
-def cmdrun(command):
-	try:
-		return subprocess.run(command, shell=True, check=True, text=True)
-	except subprocess.CalledProcessError:
-		pass
+def cmdrun(command, cwd):
+    try:
+        if cwd:
+            return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+        else:
+            return subprocess.run(command, shell=True, check=True, text=True)
+    except subprocess.CalledProcessError:
+        pass
 
 def post_install(do_reboot, do_ly_dm):
 	file_dir = pathlib.Path(__file__).parent.resolve()

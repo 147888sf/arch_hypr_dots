@@ -1,6 +1,17 @@
 from modules.install_packages import install_packages
 from modules.install_homefiles import install_homefiles
 from modules.post_install import post_install
+import time
+import subprocess
+
+def cmdrun(command, cwd):
+    try:
+        if cwd:
+            return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+        else:
+            return subprocess.run(command, shell=True, check=True, text=True)
+    except subprocess.CalledProcessError:
+        pass
 
 def dialog(text: str, default_true: bool):
     dialog = input(f'{text} ({'Y/n' if default_true else 'y/N'}): ')
@@ -65,6 +76,17 @@ do_ly_dm = dialog('Do you want to install Ly DM?', True)
 do_reboot = dialog('Do you want to reboot after install?', True)
 
 
+print(r'''
+          ___         _        _ _ _                                 
+         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
+          | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
+         |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
+                                         |___/  |_|                  
+''')
+
+cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', '~')
+cmdrun('makepkg -si --noconfirm', '~/paru-bin')
+cmdrun('sudo rm -rf ~/paru-bin')
 
 print(r'''
           ___         _        _ _ _                           _

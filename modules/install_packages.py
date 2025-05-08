@@ -1,10 +1,13 @@
 import subprocess
 
-def cmdrun(command):
-	try:
-		return subprocess.run(command, shell=True, check=True, text=True)
-	except subprocess.CalledProcessError:
-		pass
+def cmdrun(command, cwd):
+    try:
+        if cwd:
+            return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+        else:
+            return subprocess.run(command, shell=True, check=True, text=True)
+    except subprocess.CalledProcessError:
+        pass
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
