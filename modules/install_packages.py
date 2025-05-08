@@ -2,10 +2,7 @@ import subprocess
 
 def cmdrun(command, cwd):
     try:
-        if cwd:
-            return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-        else:
-            return subprocess.run(command, shell=True, check=True, text=True)
+        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
     except subprocess.CalledProcessError:
         pass
 
@@ -89,5 +86,5 @@ def install_packages(selected_drivers, do_ly_dm):
 	pacman_parsed = ' '.join(packages['Pacman'])
 	aur_parsed = ' '.join(packages['Aur'])
 
-	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
-	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
+	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}', os.path.expanduser('~'))
+	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}', os.path.expanduser('~'))

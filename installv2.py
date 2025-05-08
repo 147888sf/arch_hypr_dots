@@ -6,10 +6,7 @@ import subprocess
 
 def cmdrun(command, cwd):
     try:
-        if cwd != None:
-            return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-        else:
-            return subprocess.run(command, shell=True, check=True, text=True)
+        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
     except subprocess.CalledProcessError:
         pass
 
@@ -84,10 +81,10 @@ print(r'''
                                          |___/  |_|                  
 ''')
 
-cmdrun('sudo rm -rf ~/paru-bin')
+cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
 cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
 cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
-cmdrun('sudo rm -rf ~/paru-bin')
+cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
 
 print(r'''
           ___         _        _ _ _                           _
