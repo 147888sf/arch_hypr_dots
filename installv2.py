@@ -14,7 +14,7 @@ def cmdrun(command, cwd):
         pass
 
 def dialog(text: str, default_true: bool):
-    dialog = input(f'{text} ({'Y/n' if default_true else 'y/N'}): ')
+    dialog = input(ff{text} ({'Y/n' if default_true else 'y/N'}): ')
     if dialog.lower() == 'y':
         return True
     elif dialog == '':
@@ -84,8 +84,8 @@ print(r'''
                                          |___/  |_|                  
 ''')
 
-cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', '~')
-cmdrun('makepkg -si --noconfirm', '~/paru-bin')
+cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
+cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
 cmdrun('sudo rm -rf ~/paru-bin')
 
 print(r'''
