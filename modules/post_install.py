@@ -3,7 +3,10 @@ import pathlib
 import os
 
 def cmdrun(command):
-    return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
+	try:
+		return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
+	except:
+		pass
 
 def post_install(do_reboot, do_ly_dm):
 	file_dir = pathlib.Path(__file__).parent.resolve()

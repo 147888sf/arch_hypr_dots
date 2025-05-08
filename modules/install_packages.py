@@ -1,7 +1,10 @@
 import subprocess
 
 def cmdrun(command):
-    return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
+	try:
+		return subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
+	except:
+		pass
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
