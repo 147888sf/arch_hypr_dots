@@ -1,6 +1,7 @@
 from modules.install_packages import install_packages
 from modules.install_homefiles import install_homefiles
 from modules.post_install import post_install
+from tools.selecttools import bool_selection, list_selection
 import os
 import subprocess
 
@@ -9,18 +10,6 @@ def cmdrun(command, cwd):
         return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
     except subprocess.CalledProcessError:
         pass
-
-def dialog(text: str, default_true: bool):
-    dialog = input(f'{text} ({'Y/n' if default_true else 'y/N'}): ')
-    if dialog.lower() == 'y':
-        return True
-    elif dialog == '':
-        if default_true:
-            return True
-        else:
-            return False
-    else:
-        return False
 
 drivers = {
     'Nvidia': [
@@ -60,17 +49,9 @@ drivers = {
 for i, x in enumerate(drivers):
     print(f'{i+1}: {x}')
 
-while 1:
-    try:
-        gpu_type = int(input('Enter your GPU manifacturer to install drivers: '))
-        if gpu_type-1 in [i for i, x in enumerate(drivers)]:
-            selected_drivers = drivers[[x for i, x in enumerate(drivers)][gpu_type-1]]
-            break
-    except:
-        pass
-
-do_ly_dm = dialog('Do you want to install Ly DM?', True)
-do_reboot = dialog('Do you want to reboot after install?', True)
+selected_drivers = drivers[[x for i, x in enumerate(drivers)][list_selection('Select GPU drivers to install', drivers)-1]]
+do_ly_dm = bool_selection('Do you want to install Ly DM?', True)
+do_reboot = bool_selection('Do you want to reboot after install?', True)
 
 print(r'''
           ___         _        _ _ _                                 
