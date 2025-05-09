@@ -28,7 +28,7 @@ cat << "EOF"
          |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\_, |\__|_||_\___/_||_|
                                          |___/  |_|   |__/                   
 EOF
-sudo pacman -S --noconfirm python
+sudo pacman -S --noconfirm python python-colorama
 sleep 1
 
 python "$script_dir/installv2.py"
