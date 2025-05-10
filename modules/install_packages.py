@@ -25,7 +25,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'nano',
 			'flatpak',
 			'nautilus',
-			'vim',
+			'neovim',
 			'gnome-calculator',
 			'gnome-disk-utility',
 			'gnome-text-editor',
