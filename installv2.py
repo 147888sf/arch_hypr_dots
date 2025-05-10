@@ -11,6 +11,19 @@ def cmdrun(command, cwd):
     except subprocess.CalledProcessError:
         pass
 
+print(r'''
+          ___         _        _ _ _                                 
+         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
+          | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
+         |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
+                                         |___/  |_|                  
+''')
+
+cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
+cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
+cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
+cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
+
 drivers = {
     'Nvidia': [
         'nvidia',
@@ -46,25 +59,9 @@ drivers = {
     ]
 }
 
-for i, x in enumerate(drivers):
-    print(f'{i+1}: {x}')
-
 selected_drivers = drivers[[x for i, x in enumerate(drivers)][list_selection('Select GPU drivers to install', drivers)-1]]
 do_ly_dm = bool_selection('Do you want to install Ly DM?', True)
 do_reboot = bool_selection('Do you want to reboot after install?', True)
-
-print(r'''
-          ___         _        _ _ _                                 
-         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
-          | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
-         |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
-                                         |___/  |_|                  
-''')
-
-cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
-cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
-cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
-cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
 
 print(r'''
           ___         _        _ _ _                           _
