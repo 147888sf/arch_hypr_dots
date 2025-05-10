@@ -1,0 +1,187 @@
+-- leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.opt.number = true -- Line numbers
+vim.opt.mouse = 'a' -- Mouse support
+vim.opt.clipboard = 'unnamedplus' -- System clipboard
+vim.opt.ignorecase = true -- Ignore case in search
+vim.opt.smartcase = true -- Smart case in search
+vim.opt.tabstop = 4 -- Tab size
+vim.opt.expandtab = true -- Insert spaces instead of tab
+vim.opt.termguicolors = true -- 24-bit colors support
+
+-- Plugins
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  -- Status bar
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup({
+        options = { theme = 'auto' },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch", "diff", "diagnostics" },
+          lualine_c = { {"filename", path = 1} },
+          lualine_x = {  },
+          lualine_y = {  },
+          lualine_z = {  },
+        },
+      })
+    end
+  },
+
+  -- Search 
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local telescope = require('telescope')
+      telescope.setup()
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+    end
+  },
+
+  -- File tree  
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('nvim-tree').setup()
+      vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true })
+
+      local last_win = nil
+
+      function _G.toggle_nvimtree_focus()
+        local tree_view = require("nvim-tree.view")
+        if not tree_view.is_visible() then
+          return
+        end
+
+        local current_win = vim.api.nvim_get_current_win()
+        local tree_win = tree_view.get_winnr()
+
+        if current_win == tree_win then
+          if last_win and vim.api.nvim_win_is_valid(last_win) then
+            vim.api.nvim_set_current_win(last_win)
+          end
+        else
+
+        last_win = current_win
+        vim.api.nvim_set_current_win(tree_win)
+    end
+end
+     
+      vim.keymap.set('n', '<leader>e', '<cmd>lua toggle_nvimtree_focus()<cr>', { silent = true })
+    end
+  },
+
+  -- Auto complete
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+    },
+    config = function()
+      local cmp = require('cmp')
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+        }),
+      })
+    end
+  },
+
+  -- Snippets
+  {
+    'rafamadriz/friendly-snippets',
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end
+  },
+
+  -- LSP
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require('mason-lspconfig').setup({
+        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' } -- Примеры серверов
+      })
+    end
+  },
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({})
+      lspconfig.pyright.setup({})
+      lspconfig.rust_analyzer.setup({})
+      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+      vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+    end
+  },
+
+  -- Git
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  },
+
+  -- Color scheme
+  { "navarasu/onedark.nvim" }
+})
+
+vim.keymap.set('n', '<leader>`', '<cmd>botright terminal<cr>')
+vim.keymap.set('n', '<leader>q', '<cmd>botright terminal python3 %<cr>')
+vim.keymap.set('n', '<leader>a', '<cmd>q<cr>')
+vim.cmd.colorscheme("onedark")
