@@ -26,6 +26,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'flatpak',
 			'nautilus',
 			'neovim',
+            'pyright',
+			'npm',
 			'gnome-calculator',
 			'gnome-disk-utility',
 			'gnome-text-editor',
