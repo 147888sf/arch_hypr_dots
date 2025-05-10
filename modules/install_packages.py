@@ -10,13 +10,14 @@ def cmdrun(command, cwd):
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
 		'Pacman': [
-			'gtk3',
-			'gtk4',
 			'hyprland',
 			'hyprpicker',
 			'hyprpolkitagent',
 			'hyprpaper',
 			'hyprlock',
+            'hypridle',
+            'gtk3',
+			'gtk4',
 			'qt5-wayland',
 			'qt6-wayland',
 			'gnome-themes-extra',
