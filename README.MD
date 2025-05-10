@@ -1,5 +1,10 @@
 > This project is still WIP, but it must work well on any PC.
 
+# We need a beta tester! Please!
+
+We need Intel or AMD GPU users to test GPU drivers. We also need users to have any feedback.
+If you can help, please contact me on discord: @vova_4104
+
 # Installation 
 
 > Installation can take from 10 to 30 minutes (from 5 to 15 minutes without archinstall)
