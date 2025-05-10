@@ -63,6 +63,9 @@ selected_drivers = drivers[[x for i, x in enumerate(drivers)][list_selection('Se
 do_ly_dm = bool_selection('Do you want to install Ly DM?', True)
 do_reboot = bool_selection('Do you want to reboot after install?', True)
 
+# Zapret fix
+cmdrun('sh -c "$(curl -fsSL https://raw.githubusercontent.com/Snowy-Fluffy/zapret.installer/refs/heads/main/installer.sh)"')
+
 print(r'''
           ___         _        _ _ _                           _
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ __| |____ _ __ _ ___ ___
