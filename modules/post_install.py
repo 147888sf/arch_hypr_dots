@@ -86,7 +86,6 @@ def post_install(do_reboot, do_ly_dm):
 
 
 	# Ly dm
-
 	if do_ly_dm:
 		cmdrun('sudo systemctl enable ly', os.path.expanduser('~'))
 
