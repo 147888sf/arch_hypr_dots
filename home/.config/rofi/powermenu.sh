@@ -11,8 +11,8 @@ case "$chosen" in
         systemctl poweroff ;;
     "Sleep") 
         systemctl sleep ;;
-    "Hibernate")
-        systemctl hibernate ;;
+    "Suspend")
+        systemctl suspend ;;
     "Lock") 
         exec hyprlock ;;
 esac
