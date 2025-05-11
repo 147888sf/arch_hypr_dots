@@ -72,6 +72,12 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 
 <hr>
 
+# Credits
+Vova_4104 (AKA 147888sf) - Author, ricer, developer
+1nkognit (AKA 1nkognit2) - Co-author, tester
+
+
+
 Feel free to make forks & pull request anything you want to see in this project.
 
 Need help? Have any feedback/issues? Want to be a beta tester? Want to suggest a feature? Contact developer on discord: @vova_4104
