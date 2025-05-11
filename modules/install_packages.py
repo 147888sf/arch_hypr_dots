@@ -85,6 +85,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
 			'emote',
+            
             'via-bin',
             'visual-studio-code-bin'
 		]
