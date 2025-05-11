@@ -59,7 +59,6 @@ def install_packages(selected_drivers, do_ly_dm):
 			'network-manager-applet',
 			'ntfs-3g',
 			'dosfstools',
-	
 			'fuse',
 			'ufw',
 			'grim',
@@ -74,7 +73,8 @@ def install_packages(selected_drivers, do_ly_dm):
             'telegram-desktop',
             'qbittorrent',
             'lutris',
-            'steam'
+            'steam',
+            'vine'
 		],
 
 		'Aur': [
@@ -85,7 +85,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
 			'emote',
-            'via-bin'
+            'via-bin',
+            'visual-studio-code-bin'
 		]
 	}
 
