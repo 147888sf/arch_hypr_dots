@@ -59,7 +59,7 @@ drivers = {
     ]
 }
 
-selected_drivers = drivers[[x for i, x in enumerate(drivers)][list_selection('Select GPU drivers to install', drivers)-1]]
+selected_drivers = drivers[[x for x in drivers][list_selection('Select GPU drivers to install', drivers)]]
 do_ly_dm = bool_selection('Do you want to install Ly DM?', True)
 do_reboot = bool_selection('Do you want to reboot after install?', True)
 
