@@ -1,6 +1,6 @@
 #!/bin/sh
 
-options="Shutdown\nReboot\nSleep\nHibernate\nLock"
+options="Shutdown\nReboot\nSuspend\nHibernate\nLock"
 
 chosen=$(echo -e "$options" | rofi -dmenu -i -p ' ')
 
