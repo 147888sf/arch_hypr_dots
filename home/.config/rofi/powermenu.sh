@@ -9,8 +9,8 @@ case "$chosen" in
         systemctl reboot ;;
     "Shutdown") 
         systemctl poweroff ;;
-    "Sleep") 
-        systemctl sleep ;;
+    "Suspend") 
+        systemctl suspend ;;
     "Hibernate")
         systemctl hibernate ;;
     "Lock") 
