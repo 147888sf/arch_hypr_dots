@@ -98,7 +98,6 @@ def install_packages(selected_drivers, do_ly_dm):
 
 	pacman_parsed = ' '.join(packages['Pacman'])
 	aur_parsed = ' '.join(packages['Aur'])
-
+    
 	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}', os.path.expanduser('~'))
 	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}', os.path.expanduser('~'))
-	cmdrun('flatpak install -y flathub org.vinegarhq.Sober', os.path.expanduser('~'))
