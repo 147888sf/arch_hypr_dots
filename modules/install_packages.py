@@ -2,10 +2,10 @@ import subprocess
 import os
 
 def cmdrun(command, cwd):
-    try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-    except subprocess.CalledProcessError:
-        pass
+	try:
+		return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+	except subprocess.CalledProcessError:
+		pass
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -15,8 +15,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'hyprpolkitagent',
 			'hyprpaper',
 			'hyprlock',
-            'hypridle',
-            'gtk3',
+			'hypridle',
+			'gtk3',
 			'gtk4',
 			'qt5-wayland',
 			'qt6-wayland',
@@ -26,7 +26,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'flatpak',
 			'nautilus',
 			'neovim',
-            'pyright',
+			'pyright',
 			'npm',
 			'gnome-calculator',
 			'gnome-disk-utility',
@@ -68,12 +68,12 @@ def install_packages(selected_drivers, do_ly_dm):
 			'zsh',
 			'zsh-syntax-highlighting',
 			'zsh-autosuggestions',
-            
+			
 			'discord',
-            'telegram-desktop',
-            'qbittorrent',
-            'lutris',
-            'steam'
+			'telegram-desktop',
+			'qbittorrent',
+			'lutris',
+			'steam'
 		],
 
 		'Aur': [
@@ -84,10 +84,10 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
 			'emote',
-            
-            'via-bin',
-            'visual-studio-code-bin',
-            'vine'
+			
+			'via-bin',
+			'visual-studio-code-bin',
+			'vine'
 		]
 	}
 
@@ -98,6 +98,6 @@ def install_packages(selected_drivers, do_ly_dm):
 
 	pacman_parsed = ' '.join(packages['Pacman'])
 	aur_parsed = ' '.join(packages['Aur'])
-    
+
 	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}', os.path.expanduser('~'))
 	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}', os.path.expanduser('~'))
