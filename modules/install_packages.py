@@ -73,8 +73,7 @@ def install_packages(selected_drivers, do_ly_dm):
             'telegram-desktop',
             'qbittorrent',
             'lutris',
-            'steam',
-            'vine'
+            'steam'
 		],
 
 		'Aur': [
@@ -87,7 +86,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'emote',
             
             'via-bin',
-            'visual-studio-code-bin'
+            'visual-studio-code-bin',
+            'vine'
 		]
 	}
 
