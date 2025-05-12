@@ -74,6 +74,7 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 
 # Credits
 Vova_4104 (AKA 147888sf) - Author, ricer, developer
+
 1nkognit (AKA 1nkognit2) - Co-author, tester
 
 
