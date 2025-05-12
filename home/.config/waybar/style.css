@@ -11,9 +11,9 @@
     border-radius: 0;
     min-height: 0;
     font-family: "JetBrains Mono";
-    font-weight: 700;
-    font-size: 16px;
-    padding: 0;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 0px;
     background-clip: padding-box;
 }
 
@@ -38,11 +38,10 @@ window#waybar {
 }
 
 #window {
-    margin: 6px 6px 6px 0px;
+    margin: 6px 6px 6px 6px;
     padding: 2px 8px;
     color: @text;
 }
-
 
 #workspaces {
     margin: 4px 0px 4px 4px;
