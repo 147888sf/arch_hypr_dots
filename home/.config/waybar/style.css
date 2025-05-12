@@ -70,14 +70,16 @@ window#waybar {
 }
 
 #custom-swaync {
-    padding: 0px 12px 0px 9px;
+    padding-left: 7px;
+    padding-right: 9px;
 }
 
 #battery {
-    padding-left: 8px;
-    padding-right: 14px;
+    padding-left: 7px;
+    padding-right: 10px;
 }
 
 #custom-powermenu {
-    padding-right: 12px;
+    padding-left: 7px;
+    padding-right: 10px;
 }
