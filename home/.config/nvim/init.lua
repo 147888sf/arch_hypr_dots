@@ -137,7 +137,7 @@ end
       require('luasnip.loaders.from_vscode').lazy_load()
     end
   },
-
+  
   -- LSP
   {
     'williamboman/mason.nvim',
@@ -149,7 +149,7 @@ end
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' } -- Примеры серверов
+        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' }
       })
     end
   },
