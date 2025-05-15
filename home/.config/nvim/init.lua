@@ -186,6 +186,11 @@ require("lazy").setup({
     end
   },
 
+  -- Comments
+  {
+    'tpope/vim-commentary',
+  },
+
   -- Color scheme
   { "navarasu/onedark.nvim" }
 })
@@ -194,5 +199,8 @@ vim.keymap.set('n', '<leader>`', '<cmd>botright terminal<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>botright terminal python3 %<cr>')
 vim.keymap.set('n', '<leader>a', '<cmd>q<cr>')
 vim.keymap.set('n', '<leader>w', '<cmd>bd<cr>')
+vim.keymap.set('v', '<Tab>', '>gv', { noremap = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<C-/>', ':Commentary<CR>', { noremap = true })
 
 vim.cmd.colorscheme("onedark")
