@@ -61,14 +61,13 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 # Screenshots
 > Please note that screenshots may be outdated. Everythin is a subject to change
 
-![all_together](https://images2.imgbox.com/97/4f/y731Xe6C_o.png)
-![kitty](https://images2.imgbox.com/d3/f5/x59T9FSw_o.png)
-![drun](https://images2.imgbox.com/7f/a4/hLoAOxvJ_o.png)
-![powermenu](https://images2.imgbox.com/09/3c/PKuRutR3_o.png)
-![urban](https://images2.imgbox.com/90/18/JrhFRlt7_o.png)
-![forest_fog](https://images2.imgbox.com/c7/79/rTBBB3N6_o.png)
-![forest_snow](https://images2.imgbox.com/da/3b/muh0WeBm_o.png)
-![forest_red](https://images2.imgbox.com/45/fb/ozzV7kQX_o.png)
+![clear](https://images2.imgbox.com/d3/0a/UpxFgZjj_o.png)
+![drun](https://images2.imgbox.com/ed/78/35UuRqLG_o.png)
+![kitty](https://images2.imgbox.com/c8/4a/TxEgMWUz_o.png)
+![hyprlock](https://images2.imgbox.com/77/26/ABvAF4QF_o.png)
+![nvim](https://images2.imgbox.com/99/80/1FxfEXs3_o.png)
+![powermenu](https://images2.imgbox.com/08/11/qRBCBrEa_o.png)
+![swaync](https://images2.imgbox.com/22/a8/nDRZPMDO_o.png)
 
 <hr>
 
