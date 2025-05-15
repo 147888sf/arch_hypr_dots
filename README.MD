@@ -61,6 +61,7 @@ As for now, this installer is only made for Arch and its derivatives. Support of
 # Screenshots
 > Please note that screenshots may be outdated. Everythin is a subject to change
 
+![linux_brainrot](https://images2.imgbox.com/17/72/TDNyHzEz_o.png)
 ![clear](https://images2.imgbox.com/d3/0a/UpxFgZjj_o.png)
 ![drun](https://images2.imgbox.com/ed/78/35UuRqLG_o.png)
 ![kitty](https://images2.imgbox.com/c8/4a/TxEgMWUz_o.png)
