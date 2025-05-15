@@ -59,7 +59,25 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
     end
   },
+  
+  -- Tabs
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("bufferline").setup{
+        options = {
+          mode = "buffers",
+          separator_style = "thick",
+          show_close_icon = false,
+        }
+      }
 
+      vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
+    end
+  },
+  
   -- File tree  
   {
     'nvim-tree/nvim-tree.lua',
@@ -84,11 +102,10 @@ require("lazy").setup({
             vim.api.nvim_set_current_win(last_win)
           end
         else
-
-        last_win = current_win
-        vim.api.nvim_set_current_win(tree_win)
-    end
-end
+          last_win = current_win
+          vim.api.nvim_set_current_win(tree_win)
+        end
+      end
      
       vim.keymap.set('n', '<leader>e', '<cmd>lua toggle_nvimtree_focus()<cr>', { silent = true })
     end
@@ -114,16 +131,15 @@ end
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-j>'] = cmp.mapping.select_next_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
+          { name = 'luasnip', priority = 1000 },
+          { name = 'nvim_lsp', priority = 900 },
+          { name = 'buffer', priority = 500},
           { name = 'path' },
         }),
       })
@@ -149,7 +165,7 @@ end
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' } -- Примеры серверов
+        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' }
       })
     end
   },
@@ -169,14 +185,6 @@ end
     end
   },
 
-  -- Git
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  },
-
   -- Color scheme
   { "navarasu/onedark.nvim" }
 })
@@ -184,4 +192,6 @@ end
 vim.keymap.set('n', '<leader>`', '<cmd>botright terminal<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>botright terminal python3 %<cr>')
 vim.keymap.set('n', '<leader>a', '<cmd>q<cr>')
+vim.keymap.set('n', '<leader>w', '<cmd>bd<cr>')
+
 vim.cmd.colorscheme("onedark")
