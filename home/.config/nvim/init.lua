@@ -7,6 +7,7 @@ vim.opt.mouse = 'a' -- Mouse support
 vim.opt.clipboard = 'unnamedplus' -- System clipboard
 vim.opt.ignorecase = true -- Ignore case in search
 vim.opt.smartcase = true -- Smart case in search
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4 -- Tab size
 vim.opt.expandtab = true -- Insert spaces instead of tab
 vim.opt.termguicolors = true -- 24-bit colors support
