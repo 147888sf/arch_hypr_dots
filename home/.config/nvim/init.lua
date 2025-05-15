@@ -86,29 +86,6 @@ require("lazy").setup({
     config = function()
       require('nvim-tree').setup()
       vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true })
-
-      local last_win = nil
-
-      function _G.toggle_nvimtree_focus()
-        local tree_view = require("nvim-tree.view")
-        if not tree_view.is_visible() then
-          return
-        end
-
-        local current_win = vim.api.nvim_get_current_win()
-        local tree_win = tree_view.get_winnr()
-
-        if current_win == tree_win then
-          if last_win and vim.api.nvim_win_is_valid(last_win) then
-            vim.api.nvim_set_current_win(last_win)
-          end
-        else
-          last_win = current_win
-          vim.api.nvim_set_current_win(tree_win)
-        end
-      end
-     
-      vim.keymap.set('n', '<leader>e', '<cmd>lua toggle_nvimtree_focus()<cr>', { silent = true })
     end
   },
 
@@ -197,8 +174,9 @@ require("lazy").setup({
 
 vim.keymap.set('n', '<leader>`', '<cmd>botright terminal<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>botright terminal python3 %<cr>')
-vim.keymap.set('n', '<leader>a', '<cmd>q<cr>')
 vim.keymap.set('n', '<leader>w', '<cmd>bd<cr>')
+vim.keymap.set('n', '<leader>fw', '<cmd>bd!<cr>')
+vim.keymap.set('n', '<leader>e', ':wincmd w<CR>', { noremap = true, silent = true })
 vim.keymap.set('v', '<Tab>', '>gv', { noremap = true })
 vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true })
 vim.keymap.set({ 'n', 'v' }, '<C-/>', ':Commentary<CR>', { noremap = true })
