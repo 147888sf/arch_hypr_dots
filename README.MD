@@ -1,9 +1,8 @@
 > This project is still WIP, but it must work well on any PC.
 
-# We need feedback! Please!
-
-We need Intel or AMD GPU users to test GPU drivers. We also need users to have any feedback.
-If you can help, please contact me on discord: @vova_4104
+# Our website
+http://79.134.218.62:5000/
+Here you can find more details about the project 
 
 # Installation 
 
