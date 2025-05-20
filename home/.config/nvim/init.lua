@@ -1,6 +1,4 @@
--- leader key
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 vim.opt.number = true -- Line numbers
 vim.opt.mouse = 'a' -- Mouse support
@@ -31,6 +29,24 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    defaults = {
+      vimgrep_arguments = {
+        "rg",
+        "--hidden",
+        "--no-ignore",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+      },
+
+      file_ignore_patterns = {
+        ".git/",
+      },
+    },
+
     config = function()
       require('lualine').setup({
         options = { theme = 'auto' },
@@ -97,9 +113,9 @@ require("lazy").setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
     },
+
     config = function()
       local cmp = require('cmp')
       cmp.setup({
@@ -117,7 +133,7 @@ require("lazy").setup({
         sources = cmp.config.sources({
           { name = 'luasnip', priority = 1000 },
           { name = 'nvim_lsp', priority = 900 },
-          { name = 'buffer', priority = 500},
+          { name = 'buffer', priority = 500 },
           { name = 'path' },
         }),
       })
@@ -126,7 +142,10 @@ require("lazy").setup({
 
   -- Snippets
   {
-    'rafamadriz/friendly-snippets',
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
     end
