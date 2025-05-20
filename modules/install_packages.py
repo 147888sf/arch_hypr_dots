@@ -43,6 +43,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'noto-fonts',
 			'noto-fonts-emoji',
 			'noto-fonts-extra',
+			'noto-fonts-cjk',
 			'ttf-liberation',
 			'ttf-jetbrains-mono',
 			'ttf-jetbrains-mono-nerd',
