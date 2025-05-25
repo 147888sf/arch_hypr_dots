@@ -75,7 +75,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'qbittorrent',
 			'lutris',
 			'steam',
-			'wine'
+			'wine',
+			'obs-studio'
 		],
 
 		'Aur': [
@@ -87,8 +88,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'bibata-cursor-theme-bin',
 			'emote',
 			
-			'via-bin',
-			'visual-studio-code-bin'
+			'via-bin'
 		]
 	}
 
