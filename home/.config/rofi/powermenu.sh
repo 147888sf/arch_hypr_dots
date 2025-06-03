@@ -1,6 +1,6 @@
 #!/bin/sh
 
-options="Shutdown\nReboot\nSleep\nHibernate\nLock"
+options="Shutdown\nReboot\nSuspend\nHibernate\nLock"
 
 chosen=$(echo -e "$options" | rofi -dmenu -i -p ' ')
 
@@ -9,8 +9,8 @@ case "$chosen" in
         systemctl reboot ;;
     "Shutdown") 
         systemctl poweroff ;;
-    "Sleep") 
-        systemctl sleep ;;
+    "Suspend") 
+        systemctl suspend ;;
     "Hibernate")
         systemctl hibernate ;;
     "Lock") 

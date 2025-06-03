@@ -5,13 +5,24 @@ from tools.selecttools import bool_selection, list_selection
 import os
 import subprocess
 
+log_file = open('log.txt', 'w')
+log_file.write('')
+log_file.close()
+
+log_file = open('log.txt', 'ab')
+
+def lprint(str):
+    print(str)
+    log_file.write((str+'\n').encode())
+
 def cmdrun(command, cwd):
     try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+        output = subprocess.run(command, shell=True, cwd=cwd, check=True, text=True, capture_output=True)
+        log_file.write(output.stdout.encode())
     except subprocess.CalledProcessError:
         pass
 
-print(r'''
+lprint(r'''
           ___         _        _ _ _                                 
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
           | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
@@ -19,10 +30,10 @@ print(r'''
                                          |___/  |_|                  
 ''')
 
-cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
-cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
-cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
-cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
+# cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
+# cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
+# cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
+# cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
 
 drivers = {
     'Nvidia': [
@@ -59,11 +70,11 @@ drivers = {
     ]
 }
 
-selected_drivers = drivers[[x for i, x in enumerate(drivers)][list_selection('Select GPU drivers to install', drivers)-1]]
+selected_drivers = drivers[[x for x in drivers][list_selection('Select GPU drivers to install', drivers)]]
 do_ly_dm = bool_selection('Do you want to install Ly DM?', True)
 do_reboot = bool_selection('Do you want to reboot after install?', True)
 
-print(r'''
+lprint(r'''
           ___         _        _ _ _                           _
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ __| |____ _ __ _ ___ ___
           | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` / _| / / _` / _` / -_|_-<
@@ -71,9 +82,9 @@ print(r'''
                                          |___/  |_|                    |___/
 ''')
 
-install_packages(selected_drivers, do_ly_dm)
+# install_packages(selected_drivers, do_ly_dm)
 
-print(r'''
+lprint(r'''
           ___         _        _ _ _                _     _    __ _ _
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   __| |___| |_ / _(_) |___ ___
           | || ' \(_-<  _/ _` | | | | ' \/ _` | / _` / _ \  _|  _| | / -_|_-<
@@ -81,9 +92,9 @@ print(r'''
                                          |___/
 ''' )
 
-install_homefiles()
+# install_homefiles()
 
-print(r'''
+lprint(r'''
           ___        _     _         _        _ _                           _
          | _ \___ __| |_  (_)_ _  __| |_ __ _| | |  _ __ _ _ ___  __ ___ __| |_  _ _ _ ___ ___
          |  _/ _ (_-<  _| | | ' \(_-<  _/ _` | | | | '_ \ '_/ _ \/ _/ -_) _` | || | '_/ -_|_-<
@@ -91,4 +102,8 @@ print(r'''
                                                    |_|
 ''')
 
-post_install(do_reboot, do_ly_dm)
+# post_install(do_reboot, do_ly_dm)
+
+cmdrun('echo z', os.path.expanduser('~'))
+
+log_file.close()

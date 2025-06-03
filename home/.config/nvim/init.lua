@@ -1,12 +1,11 @@
--- leader key
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 vim.opt.number = true -- Line numbers
 vim.opt.mouse = 'a' -- Mouse support
 vim.opt.clipboard = 'unnamedplus' -- System clipboard
 vim.opt.ignorecase = true -- Ignore case in search
 vim.opt.smartcase = true -- Smart case in search
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4 -- Tab size
 vim.opt.expandtab = true -- Insert spaces instead of tab
 vim.opt.termguicolors = true -- 24-bit colors support
@@ -30,6 +29,24 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    defaults = {
+      vimgrep_arguments = {
+        "rg",
+        "--hidden",
+        "--no-ignore",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+      },
+
+      file_ignore_patterns = {
+        ".git/",
+      },
+    },
+
     config = function()
       require('lualine').setup({
         options = { theme = 'auto' },
@@ -59,7 +76,25 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
     end
   },
+  
+  -- Tabs
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require("bufferline").setup{
+        options = {
+          mode = "buffers",
+          separator_style = "thick",
+          show_close_icon = false,
+        }
+      }
 
+      vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
+    end
+  },
+  
   -- File tree  
   {
     'nvim-tree/nvim-tree.lua',
@@ -67,30 +102,6 @@ require("lazy").setup({
     config = function()
       require('nvim-tree').setup()
       vim.keymap.set('n', '<leader>t', ':NvimTreeToggle<CR>', { silent = true })
-
-      local last_win = nil
-
-      function _G.toggle_nvimtree_focus()
-        local tree_view = require("nvim-tree.view")
-        if not tree_view.is_visible() then
-          return
-        end
-
-        local current_win = vim.api.nvim_get_current_win()
-        local tree_win = tree_view.get_winnr()
-
-        if current_win == tree_win then
-          if last_win and vim.api.nvim_win_is_valid(last_win) then
-            vim.api.nvim_set_current_win(last_win)
-          end
-        else
-
-        last_win = current_win
-        vim.api.nvim_set_current_win(tree_win)
-    end
-end
-     
-      vim.keymap.set('n', '<leader>e', '<cmd>lua toggle_nvimtree_focus()<cr>', { silent = true })
     end
   },
 
@@ -102,9 +113,9 @@ end
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
-      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
     },
+
     config = function()
       local cmp = require('cmp')
       cmp.setup({
@@ -114,16 +125,15 @@ end
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-j>'] = cmp.mapping.select_next_item(),
+          ['<C-k>'] = cmp.mapping.select_prev_item(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
+          { name = 'luasnip', priority = 1000 },
+          { name = 'nvim_lsp', priority = 900 },
+          { name = 'buffer', priority = 500 },
           { name = 'path' },
         }),
       })
@@ -132,7 +142,10 @@ end
 
   -- Snippets
   {
-    'rafamadriz/friendly-snippets',
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'rafamadriz/friendly-snippets',
+    },
     config = function()
       require('luasnip.loaders.from_vscode').lazy_load()
     end
@@ -149,7 +162,7 @@ end
     'williamboman/mason-lspconfig.nvim',
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' } -- Примеры серверов
+        ensure_installed = { 'lua_ls', 'pyright', 'rust_analyzer' }
       })
     end
   },
@@ -169,12 +182,9 @@ end
     end
   },
 
-  -- Git
+  -- Comments
   {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
+    'tpope/vim-commentary',
   },
 
   -- Color scheme
@@ -183,5 +193,11 @@ end
 
 vim.keymap.set('n', '<leader>`', '<cmd>botright terminal<cr>')
 vim.keymap.set('n', '<leader>q', '<cmd>botright terminal python3 %<cr>')
-vim.keymap.set('n', '<leader>a', '<cmd>q<cr>')
+vim.keymap.set('n', '<leader>w', '<cmd>bd<cr>')
+vim.keymap.set('n', '<leader>fw', '<cmd>bd!<cr>')
+vim.keymap.set('n', '<leader>e', ':wincmd w<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<Tab>', '>gv', { noremap = true })
+vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true })
+vim.keymap.set({ 'n', 'v' }, '<C-/>', ':Commentary<CR>', { noremap = true })
+
 vim.cmd.colorscheme("onedark")

@@ -17,8 +17,9 @@ setopt SHARE_HISTORY
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias reload='clear && source .zshrc'
+alias reload='clear && source ~/.zshrc'
 alias lsa='ls -A'
+alias fetch='fastfetch'
 
 autoload -U compinit
 compinit

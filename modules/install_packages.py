@@ -2,10 +2,10 @@ import subprocess
 import os
 
 def cmdrun(command, cwd):
-    try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-    except subprocess.CalledProcessError:
-        pass
+	try:
+		return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
+	except subprocess.CalledProcessError:
+		pass
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -15,8 +15,8 @@ def install_packages(selected_drivers, do_ly_dm):
 			'hyprpolkitagent',
 			'hyprpaper',
 			'hyprlock',
-            'hypridle',
-            'gtk3',
+			'hypridle',
+			'gtk3',
 			'gtk4',
 			'qt5-wayland',
 			'qt6-wayland',
@@ -26,7 +26,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'flatpak',
 			'nautilus',
 			'neovim',
-            'pyright',
+			'pyright',
 			'npm',
 			'gnome-calculator',
 			'gnome-disk-utility',
@@ -43,6 +43,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'noto-fonts',
 			'noto-fonts-emoji',
 			'noto-fonts-extra',
+			'noto-fonts-cjk',
 			'ttf-liberation',
 			'ttf-jetbrains-mono',
 			'ttf-jetbrains-mono-nerd',
@@ -59,7 +60,6 @@ def install_packages(selected_drivers, do_ly_dm):
 			'network-manager-applet',
 			'ntfs-3g',
 			'dosfstools',
-	
 			'fuse',
 			'ufw',
 			'grim',
@@ -68,7 +68,15 @@ def install_packages(selected_drivers, do_ly_dm):
 			'playerctl',
 			'zsh',
 			'zsh-syntax-highlighting',
-			'zsh-autosuggestions'
+			'zsh-autosuggestions',
+			
+			'discord',
+			'telegram-desktop',
+			'qbittorrent',
+			'lutris',
+			'steam',
+			'wine',
+			'obs-studio'
 		],
 
 		'Aur': [
@@ -78,7 +86,9 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-icon-theme',
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
-			'emote'
+			'emote',
+			
+			'via-bin'
 		]
 	}
 
