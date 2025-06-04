@@ -1,11 +1,21 @@
 import subprocess
 import os
 
+def log(str):
+    log_file = open('log.txt', 'ab')
+    log_file.write((str+'\n').encode())
+    log_file.close()
+
+def lprint(str):
+    print(str)
+    log(str)
+
 def cmdrun(command, cwd):
-	try:
-		return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-	except subprocess.CalledProcessError:
-		pass
+    try:
+        output = subprocess.run(command, shell=True, cwd=cwd, check=False, text=True, capture_output=True)
+        log(output.stdout)
+    except subprocess.CalledProcessError:
+        pass
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -76,7 +86,12 @@ def install_packages(selected_drivers, do_ly_dm):
 			'lutris',
 			'steam',
 			'wine',
-			'obs-studio'
+			'obs-studio',
+			'bat',
+			'cloc',
+			'tree',
+			'htop',
+			'cava'
 		],
 
 		'Aur': [

@@ -5,6 +5,13 @@ import termios
 import re
 from colorama import Fore, Back, Style
 
+
+def log(str):
+    log_file = open('log.txt', 'ab')
+    log_file.write((str+'\n').encode())
+    log_file.close()
+
+
 def ansi_aware_center(text: str, width: int) -> str:
     stripped_text = re.sub(r'\x1b\[([0-9;]+)m', '', text)
     text_length = len(stripped_text)
@@ -54,6 +61,7 @@ def bool_selection(question: str, default_state = True, full_screen = True):
 		else:
 			print(key)
 
+	log(f'Bool selection: "{question}": "{selection}"')
 	return selection
 
 def list_selection(question, list):
@@ -87,5 +95,6 @@ def list_selection(question, list):
 			selection = 0
 		if selection < 0:
 			selection = len(list)-1
-	
+
+	log(f'List selection: "{question}": "{selection}"')	
 	return selection
