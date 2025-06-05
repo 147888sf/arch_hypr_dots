@@ -1,11 +1,10 @@
 > This project is still WIP, but it must work well on any PC.
-
+f
 # Our website
 http://79.134.218.62:5000/
-Here you can find more details about the project 
+Here you can find more details about the project
 
-# Installation 
-
+# Installation
 > Installation can take from 10 to 30 minutes (from 5 to 15 minutes without archinstall)
 
 ### 1. Install Git
@@ -42,13 +41,13 @@ hyprland
 python ~/Scripts/wallpaper-switcher.py
 ```
 
-### 2. Drag & drop wallpaper file (it should have no spaces in path) 
+### 2. Drag & drop wallpaper file (it should have no spaces in path)
 
 ### 3. Press enter
 
 # Compatibility
 ### Linux distribution
-As for now, this installer is only made for Arch and its derivatives. Support of any other distributions is not planned yet.
+As for now, this installer is only made for Arch and Arch-based distributions. Support of any other distributions is not planned yet.
 ### Device type
 - Desktop ✅
 - Laptop ✅
