@@ -2,10 +2,11 @@ import subprocess
 import os
 
 def cmdrun(command, cwd):
-	try:
-		return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-	except subprocess.CalledProcessError:
-		pass
+    try:
+        output = subprocess.run(command, shell=True, cwd=cwd, check=True, text=True, capture_output=True)
+        log_file.write(output.stdout.encode())
+    except subprocess.CalledProcessError as error:
+        log.write(error.stderr.encode())
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -50,7 +51,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'fastfetch',
 			'xdg-desktop-portal',
 			'xdg-desktop-portal-gtk',
-			'xdg-desktop-portal-hyprland',  
+			'xdg-desktop-portal-hyprland',
 			'swaync',
 			'pipewire',
 			'pipewire-pulse',
@@ -69,7 +70,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'zsh',
 			'zsh-syntax-highlighting',
 			'zsh-autosuggestions',
-			
+
 			'discord',
 			'telegram-desktop',
 			'qbittorrent',
@@ -87,7 +88,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
 			'emote',
-			
+
 			'via-bin'
 		]
 	}

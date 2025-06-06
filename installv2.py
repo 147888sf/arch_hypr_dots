@@ -19,21 +19,21 @@ def cmdrun(command, cwd):
     try:
         output = subprocess.run(command, shell=True, cwd=cwd, check=True, text=True, capture_output=True)
         log_file.write(output.stdout.encode())
-    except subprocess.CalledProcessError:
-        pass
+    except subprocess.CalledProcessError as error:
+        log.write(error.stderr.encode())
 
 lprint(r'''
-          ___         _        _ _ _                                 
-         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
+          ___         _        _ _ _
+         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _
           | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
          |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
-                                         |___/  |_|                  
+                                         |___/  |_|
 ''')
 
-# cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
-# cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
-# cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
-# cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
+cmdrun('sudo rm -rf ~/paru-bin', os.path.expanduser('~'))
+cmdrun('git clone --depth 1 https://aur.archlinux.org/paru-bin.git', os.path.expanduser('~'))
+cmdrun('makepkg -si --noconfirm', f'{os.path.expanduser('~')}/paru-bin')
+cmdrun('sudo rm -rf paru-bin', os.path.expanduser('~'))
 
 drivers = {
     'Nvidia': [
@@ -64,7 +64,7 @@ drivers = {
         'libva-intel-driver',
         'lib32-libva-intel-driver'
     ],
-    
+
     'Do not install GPU driver': [
 
     ]
@@ -82,7 +82,7 @@ lprint(r'''
                                          |___/  |_|                    |___/
 ''')
 
-# install_packages(selected_drivers, do_ly_dm)
+install_packages(selected_drivers, do_ly_dm)
 
 lprint(r'''
           ___         _        _ _ _                _     _    __ _ _
@@ -92,7 +92,7 @@ lprint(r'''
                                          |___/
 ''' )
 
-# install_homefiles()
+install_homefiles()
 
 lprint(r'''
           ___        _     _         _        _ _                           _
@@ -102,7 +102,7 @@ lprint(r'''
                                                    |_|
 ''')
 
-# post_install(do_reboot, do_ly_dm)
+post_install(do_reboot, do_ly_dm)
 
 cmdrun('echo z', os.path.expanduser('~'))
 

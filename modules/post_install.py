@@ -4,9 +4,10 @@ import os
 
 def cmdrun(command, cwd):
     try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-    except subprocess.CalledProcessError:
-        pass
+        output = subprocess.run(command, shell=True, cwd=cwd, check=True, text=True, capture_output=True)
+        log_file.write(output.stdout.encode())
+    except subprocess.CalledProcessError as error:
+        log.write(error.stderr.encode())
 
 def post_install(do_reboot, do_ly_dm):
 	file_dir = pathlib.Path(__file__).parent.resolve()
