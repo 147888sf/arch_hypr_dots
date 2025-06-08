@@ -1,21 +1,7 @@
 import subprocess
 import os
 
-def log(str):
-    log_file = open('log.txt', 'ab')
-    log_file.write((str+'\n').encode())
-    log_file.close()
-
-def lprint(str):
-    print(str)
-    log(str)
-
-def cmdrun(command, cwd):
-    try:
-        output = subprocess.run(command, shell=True, cwd=cwd, check=False, text=True, capture_output=True)
-        log(output.stdout)
-    except subprocess.CalledProcessError:
-        pass
+from tools.log_tools import *
 
 def install_packages(selected_drivers, do_ly_dm):
 	packages = {
@@ -60,7 +46,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'fastfetch',
 			'xdg-desktop-portal',
 			'xdg-desktop-portal-gtk',
-			'xdg-desktop-portal-hyprland',  
+			'xdg-desktop-portal-hyprland',
 			'swaync',
 			'pipewire',
 			'pipewire-pulse',
@@ -79,7 +65,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'zsh',
 			'zsh-syntax-highlighting',
 			'zsh-autosuggestions',
-			
+
 			'discord',
 			'telegram-desktop',
 			'qbittorrent',
@@ -102,7 +88,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'papirus-folders',
 			'bibata-cursor-theme-bin',
 			'emote',
-			
+
 			'via-bin'
 		]
 	}
@@ -115,5 +101,5 @@ def install_packages(selected_drivers, do_ly_dm):
 	pacman_parsed = ' '.join(packages['Pacman'])
 	aur_parsed = ' '.join(packages['Aur'])
 
-	cmdrun(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}', os.path.expanduser('~'))
-	cmdrun(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}', os.path.expanduser('~'))
+	log_cmd(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
+	log_cmd(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
