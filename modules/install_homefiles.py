@@ -4,7 +4,7 @@ import shutil
 import os
 from tools.log_tools import *
 
-def install_homefiles():
+def install_homefiles(do_backup):
     file_dir = pathlib.Path(__file__).parent.parent.resolve()
     home = pathlib.Path(os.path.expanduser('~')).resolve()
     source_dir = file_dir / 'home'
@@ -17,9 +17,14 @@ def install_homefiles():
                 for item in src.iterdir():
                     copy_with_replace(item, dst / item.name)
             else:
-                if dst.is_file():
-                    os.rename(dst,str(dst)+'.backup')
-                shutil.copy2(src, dst, follow_symlinks=False)
+                
+                if src.name == 'custom.conf' and dst.is_file():
+                    pass
+                else:
+                    if do_backup:
+                        if dst.is_file():
+                            os.rename(dst,str(dst)+'.backup')
+                    shutil.copy2(src, dst, follow_symlinks=False)
         except Exception as e:
             err_log(e)
 
