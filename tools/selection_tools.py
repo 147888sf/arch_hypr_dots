@@ -4,25 +4,19 @@ import tty
 import termios
 import re
 from colorama import Fore, Back, Style
-
-
-def log(str):
-    log_file = open('log.txt', 'ab')
-    log_file.write((str+'\n').encode())
-    log_file.close()
-
+from tools.log_tools import *
 
 def ansi_aware_center(text: str, width: int) -> str:
     stripped_text = re.sub(r'\x1b\[([0-9;]+)m', '', text)
     text_length = len(stripped_text)
-    
+
     if text_length >= width:
         return text
-    
+
     total_padding = width - text_length
     left_padding = total_padding // 2
     right_padding = total_padding - left_padding
-    
+
     return ' ' * left_padding + text + ' ' * right_padding
 
 def get_key():
@@ -34,12 +28,12 @@ def get_key():
         if ch == '\x1b':
             ch += sys.stdin.read(2)
     finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)	
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
     return ch
 
 
 
-	
+
 def bool_selection(question: str, default_state = True, full_screen = True):
 	selection = default_state
 
@@ -77,7 +71,7 @@ def list_selection(question, list):
 				print(ansi_aware_center(Back.WHITE+Fore.BLACK+x+Style.RESET_ALL, w))
 			else:
 				print(ansi_aware_center(x, w))
-				
+
 
 		key = get_key()
 
@@ -96,5 +90,5 @@ def list_selection(question, list):
 		if selection < 0:
 			selection = len(list)-1
 
-	log(f'List selection: "{question}": "{selection}"')	
+	log(f'List selection: "{question}": "{selection}"')
 	return selection

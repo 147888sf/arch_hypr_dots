@@ -1,7 +1,7 @@
 from modules.install_packages import install_packages
 from modules.install_homefiles import install_homefiles
 from modules.post_install import post_install
-from tools.selecttools import bool_selection, list_selection
+from tools.selection_tools import bool_selection, list_selection
 
 from tools.log_tools import *
 
