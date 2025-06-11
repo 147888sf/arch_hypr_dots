@@ -9,6 +9,8 @@ cat << "EOF"
 
 EOF
 
+script_dir=$(dirname "$(realpath "$0")")
+
 sudo -v
 
 (
@@ -27,4 +29,4 @@ cat << "EOF"
                                          |___/  |_|   |__/
 EOF
 sudo pacman -S --noconfirm python python-colorama
-python "installer_main.py"
+python "$script_dir/installer_main.py"

@@ -63,7 +63,7 @@ def post_install(do_reboot, do_ly_dm):
 
 
 
-	# Screenshare
+	# Screenshare & audio
 	log_cmd('sudo systemctl --user enable --now pipewire pipewire-pulse wireplumber')
 
 

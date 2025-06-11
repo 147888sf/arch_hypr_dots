@@ -3,7 +3,7 @@ import os
 
 from tools.log_tools import *
 
-def install_packages(selected_drivers, do_ly_dm):
+def install_packages(selected_drivers, do_ly_dm, do_update_system):
 	packages = {
 		'Pacman': [
 			'hyprland',
@@ -12,6 +12,7 @@ def install_packages(selected_drivers, do_ly_dm):
 			'hyprpaper',
 			'hyprlock',
 			'hypridle',
+			'hyprsunset'
 			'gtk3',
 			'gtk4',
 			'qt5-wayland',
@@ -103,3 +104,6 @@ def install_packages(selected_drivers, do_ly_dm):
 
 	log_cmd(f'sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}')
 	log_cmd(f'paru -Sy && paru -S --noconfirm --needed {aur_parsed}')
+
+	if do_update_system:
+	    log_cmd('paru -Syu')
