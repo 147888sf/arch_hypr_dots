@@ -1,6 +1,6 @@
-import subprocess
-import pathlib
 import os
+import subprocess
+
 
 def cmdrun(command, cwd):
     try:
@@ -9,7 +9,6 @@ def cmdrun(command, cwd):
         pass
 
 def post_install(do_reboot, do_ly_dm):
-	file_dir = pathlib.Path(__file__).parent.resolve()
 	home = os.getenv('HOME')
 
 	waybar_css = f'{home}/.config/waybar/style.css'
@@ -62,7 +61,7 @@ def post_install(do_reboot, do_ly_dm):
 		file = open(multilib_conf, 'wb')
 		file.write(content.replace('#[multilib]\n#Include = /etc/pacman.d/mirrorlist','[multilib]\nInclude = /etc/pacman.d/mirrorlist').encode())
 		file.close()
-	except:
+	except Exception:
 		pass
 
 
