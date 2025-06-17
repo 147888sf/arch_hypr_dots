@@ -38,7 +38,7 @@ This is my project of Arch Linux rice installer made using Python, Shell and my 
 - **Power menu, app launcher**: Rofi
 - **Taskbar**: Waybar
 - **Notifications**: Swaync
-- **Fetch**: Fastfetchs
+- **Fetch**: Fastfetch
 
 ## Compatibility
 
