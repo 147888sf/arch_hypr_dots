@@ -3,6 +3,9 @@
 @define-color text rgba(255,255,255,1);
 @define-color accent @color1;
 
+@define-color text rgba(255,255,255,1);
+@define-color accent @color1;
+
 * {
     outline: none;
     box-shadow: none;

@@ -1,15 +1,7 @@
-import os
-import subprocess
+from tools.log_tools import log_cmd
 
 
-def cmdrun(command, cwd):
-    try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-    except subprocess.CalledProcessError:
-        pass
-
-
-def install_packages(selected_drivers, do_ly_dm):
+def install_packages(selected_drivers, do_ly_dm, do_update_system):
     packages = {
         "Pacman": [
             "hyprland",
@@ -18,6 +10,7 @@ def install_packages(selected_drivers, do_ly_dm):
             "hyprpaper",
             "hyprlock",
             "hypridle",
+            "hyprsunset",
             "gtk3",
             "gtk4",
             "qt5-wayland",
@@ -71,6 +64,12 @@ def install_packages(selected_drivers, do_ly_dm):
             "zsh",
             "zsh-syntax-highlighting",
             "zsh-autosuggestions",
+            "bat",
+            "cloc",
+            "tree",
+            "htop",
+            "cava",
+            "trash-cli",
         ],
         "Aur": [
             "oh-my-posh-bin",
@@ -80,6 +79,7 @@ def install_packages(selected_drivers, do_ly_dm):
             "papirus-folders",
             "bibata-cursor-theme-bin",
             "emote",
+            "visual-studio-code-bin",
         ],
     }
 
@@ -91,11 +91,8 @@ def install_packages(selected_drivers, do_ly_dm):
     pacman_parsed = " ".join(packages["Pacman"])
     aur_parsed = " ".join(packages["Aur"])
 
-    cmdrun(
-        f"sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}",
-        os.path.expanduser("~"),
-    )
-    cmdrun(
-        f"paru -Sy && paru -S --noconfirm --needed {aur_parsed}",
-        os.path.expanduser("~"),
-    )
+    log_cmd(f"sudo pacman -Sy && sudo pacman -S --noconfirm --needed {pacman_parsed}")
+    log_cmd(f"paru -Sy && paru -S --noconfirm --needed {aur_parsed}")
+
+    if do_update_system:
+        log_cmd("paru -Syu")

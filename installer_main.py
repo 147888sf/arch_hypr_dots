@@ -1,34 +1,25 @@
 import os
-import subprocess
 
 from modules.install_homefiles import install_homefiles
 from modules.install_packages import install_packages
 from modules.post_install import post_install
-from tools.selecttools import bool_selection, list_selection
+from tools.log_tools import clear_log, log_cmd, log_print
+from tools.selection_tools import bool_selection, list_selection
 
+clear_log()
 
-def cmdrun(command, cwd):
-    try:
-        return subprocess.run(command, shell=True, cwd=cwd, check=True, text=True)
-    except subprocess.CalledProcessError:
-        pass
-
-
-print(r"""
-          ___         _        _ _ _                                 
-         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _ 
+log_print(r"""
+          ___         _        _ _ _
+         |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ _ _ _  _
           | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` | '_| || |
          |___|_||_/__/\__\__,_|_|_|_|_||_\__, | | .__/\__,_|_|  \_,_|
-                                         |___/  |_|                  
+                                         |___/  |_|
 """)
 
-cmdrun("sudo rm -rf ~/paru-bin", os.path.expanduser("~"))
-cmdrun(
-    "git clone --depth 1 https://aur.archlinux.org/paru-bin.git",
-    os.path.expanduser("~"),
-)
-cmdrun("makepkg -si --noconfirm", f"{os.path.expanduser('~')}/paru-bin")
-cmdrun("sudo rm -rf paru-bin", os.path.expanduser("~"))
+log_cmd("sudo rm -rf ~/paru-bin")
+log_cmd("git clone --depth 1 https://aur.archlinux.org/paru-bin.git")
+log_cmd("makepkg -si --noconfirm", f"{os.path.expanduser('~')}/paru-bin")
+log_cmd("sudo rm -rf paru-bin")
 
 drivers = {
     "Nvidia": [
@@ -63,10 +54,14 @@ drivers = {
 selected_drivers = drivers[
     [x for x in drivers][list_selection("Select GPU drivers to install", drivers)]
 ]
+do_backup = bool_selection("Do you want to backup config files?", True)
 do_ly_dm = bool_selection("Do you want to install Ly DM?", True)
+do_update_sysyem = bool_selection(
+    "Do you want to update your system after install?", True
+)
 do_reboot = bool_selection("Do you want to reboot after install?", True)
 
-print(r"""
+log_print(r"""
           ___         _        _ _ _                           _
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   _ __  __ _ __| |____ _ __ _ ___ ___
           | || ' \(_-<  _/ _` | | | | ' \/ _` | | '_ \/ _` / _| / / _` / _` / -_|_-<
@@ -74,9 +69,9 @@ print(r"""
                                          |___/  |_|                    |___/
 """)
 
-install_packages(selected_drivers, do_ly_dm)
+install_packages(selected_drivers, do_ly_dm, do_update_sysyem)
 
-print(r"""
+log_print(r"""
           ___         _        _ _ _                _     _    __ _ _
          |_ _|_ _  __| |_ __ _| | (_)_ _  __ _   __| |___| |_ / _(_) |___ ___
           | || ' \(_-<  _/ _` | | | | ' \/ _` | / _` / _ \  _|  _| | / -_|_-<
@@ -84,9 +79,9 @@ print(r"""
                                          |___/
 """)
 
-install_homefiles()
+install_homefiles(do_backup)
 
-print(r"""
+log_print(r"""
           ___        _     _         _        _ _                           _
          | _ \___ __| |_  (_)_ _  __| |_ __ _| | |  _ __ _ _ ___  __ ___ __| |_  _ _ _ ___ ___
          |  _/ _ (_-<  _| | | ' \(_-<  _/ _` | | | | '_ \ '_/ _ \/ _/ -_) _` | || | '_/ -_|_-<
