@@ -21,6 +21,13 @@ alias reload='clear && source ~/.zshrc'
 alias lsa='ls -A'
 alias fetch='fastfetch'
 
+alias g="git"
+alias b="bat"
+alias rm="trash-put"
+alias rmF="rm"
+alias pac="sudo pacman"
+alias stat="cloc ."
+
 autoload -U compinit
 compinit
 

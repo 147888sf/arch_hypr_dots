@@ -75,6 +75,7 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "tree",
             "htop",
             "cava",
+            "trash-cli",
         ],
         "Aur": [
             "oh-my-posh-bin",
@@ -85,6 +86,7 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "bibata-cursor-theme-bin",
             "emote",
             "via-bin",
+            "visual-studio-code-bin",
         ],
     }
 
