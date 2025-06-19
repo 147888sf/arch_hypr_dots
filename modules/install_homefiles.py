@@ -17,7 +17,7 @@ def install_homefiles(do_backup):
                     dst.mkdir(parents=True)
                 for item in src.iterdir():
                     copy_with_replace(item, dst / item.name)
-            else:
+            elif src.is_file():
                 if src.name == "custom.conf" and dst.is_file():
                     pass
                 else:
