@@ -105,9 +105,10 @@ The `modules/post_install.py` script enables things like DM, fixing user names i
 
 - `install.sh`: python and python libs; initilizng installv2.py.
 - `installv2.py`: driver list and selection, install parameters, installing paru, initilizing other scripts.
-- `tools/selecttools.py`: full screen install parameters selection.
+- `tools/selection_tools.py`: full screen install parameters selection module.
+- `tools/log_tools.py`: Logging tools for other scripts
 - `modules/install_packages.py`: list of all packages, installing it.
-- `modules/install_homefiles.py`: moving files from `home` to `~`
+- `modules/install_homefiles.py`: copying files from `home` to `~`
 - `modules/post_install.py`: fixing waybar CSS home path, enabling multilib, setting wallapeprs, pipewire & wireplumber services, network manager service, GTK settings, DM enabling, reboot after install
 
 ## How to make your own installer
