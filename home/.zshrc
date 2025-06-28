@@ -28,6 +28,8 @@ alias rmF="rm"
 alias pac="sudo pacman"
 alias stat="cloc ."
 
+alias help="echo 'Nah bro'"
+
 autoload -U compinit
 compinit
 
