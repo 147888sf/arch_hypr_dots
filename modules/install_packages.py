@@ -15,7 +15,6 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "qt5-wayland",
             "qt6-wayland",
             "gnome-themes-extra",
-            "firefox",
             "nano",
             "flatpak",
             "nautilus",
@@ -87,6 +86,7 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "emote",
             "via-bin",
             "visual-studio-code-bin",
+            "zen-browser-bin",
         ],
     }
 
