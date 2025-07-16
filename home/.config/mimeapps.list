@@ -1,7 +1,4 @@
 [Default Applications]
-image/*=zen.desktop
-video/*=zen.desktop
-
 text/plain=code.desktop
 text/x-python=code.desktop
 text/x-c++src=code.desktop
@@ -16,3 +13,5 @@ application/xhtml+xml=zen.desktop
 
 inode/directory=lf.desktop
 
+image/*=zen.desktop
+video/*=zen.desktop
