@@ -7,7 +7,6 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "hyprland",
             "hyprpicker",
             "hyprpolkitagent",
-            "hyprpaper",
             "hyprlock",
             "hypridle",
             "hyprsunsetgtk3",
@@ -75,6 +74,7 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "htop",
             "cava",
             "trash-cli",
+            "swww",
         ],
         "Aur": [
             "oh-my-posh-bin",
