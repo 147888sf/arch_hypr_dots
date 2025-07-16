@@ -1,0 +1,15 @@
+[Default Applications]
+text/plain=code.desktop
+text/x-python=code.desktop
+text/x-c++src=code.desktop
+text/x-csrc=code.desktop
+text/javascript=code.desktop
+application/json=code.desktop
+application/xml=code.desktop
+application/x-shellscript=code.desktop
+
+text/html=zen.desktop
+application/xhtml+xml=zen.desktop
+
+inode/directory=lf.desktop
+
