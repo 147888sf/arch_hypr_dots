@@ -8,12 +8,8 @@ configuration {
     scroll-method:              1;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";    
-    kb-row-up: "k,Up";
-    kb-row-down: "j,Down";
-    kb-accept-entry: "Return,KP_Enter";
-    kb-cancel: "Escape";
-    kb-mode-next: "Tab,l,Right";
-    kb-mode-previous: "ISO_Left_Tab,h,Left";
+    kb-row-down: "Down, Control+j";
+    kb-row-up: "Up, Control+k";
 }
 
 @theme "~/.config/rofi/themes/round-gray.rasi"
