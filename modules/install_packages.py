@@ -75,6 +75,7 @@ def install_packages(selected_drivers, do_ly_dm, do_update_system):
             "cava",
             "trash-cli",
             "swww",
+            "perl-file-mimeinfo",
         ],
         "Aur": [
             "oh-my-posh-bin",
