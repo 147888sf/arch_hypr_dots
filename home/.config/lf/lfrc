@@ -1,4 +1,0 @@
-set hidden
-cmd open $mimeopen $f
-
-map l :open
