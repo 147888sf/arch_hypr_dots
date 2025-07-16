@@ -1,5 +1,5 @@
 [Default Applications]
-text/plain=code.desktop
+text/plain=org.gnome.TextEditor.desktop
 text/x-python=code.desktop
 text/x-c++src=code.desktop
 text/x-csrc=code.desktop
