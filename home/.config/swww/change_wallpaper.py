@@ -4,7 +4,7 @@ import subprocess
 import time
 
 WALLPAPER_DIR = os.path.expanduser("~/Wallpapers")
-INTERVAL_SECONDS = 150
+INTERVAL_SECONDS = 600
 
 IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"]
 
