@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-log_filename = f"{os.getcwd()}/log.txt"
+log_filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), "log.txt")
 
 
 def clear_log():
