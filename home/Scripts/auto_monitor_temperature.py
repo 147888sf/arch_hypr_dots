@@ -1,39 +1,54 @@
 import datetime
 import signal
-import time
 import subprocess
-
-temperature_night = 5000
+import time
 
 enabled = False
 
-def check_time():
-    current_time = datetime.datetime.now().time() # Current time
-    start_time = datetime.time(1, 30)              # 1:30
-    end_time = datetime.time(7, 0)                # 7:00
+time_shedule = [
+    (datetime.time(22, 30), 5000),
+    (datetime.time(23, 0), 4000),
+    (datetime.time(23, 30), 3250),
+    (datetime.time(7, 0), 6000),
+]
 
-    if start_time <= current_time < end_time:
-        return True
-    else:
-        return False
+
+def get_current_temperature():
+    current_time = datetime.datetime.now().time()
+
+    sorted_schedule = sorted(time_shedule, key=lambda x: x[0])
+
+    for start_time, temperature in reversed(sorted_schedule):
+        if current_time >= start_time:
+            return temperature
+
+    return sorted_schedule[-1][1]
+
+
+def change_temperature(new_temperature, current_temperature):
+    global proccess
+    if new_temperature != current_temperature:
+        current_temperature = new_temperature
+        try:
+            proccess.send_signal(signal.SIGINT)
+            time.sleep(1)
+        except NameError:
+            pass
+
+        proccess = subprocess.Popen(
+            f"hyprsunset -t {current_temperature}", shell=True, start_new_session=True
+        )
+
+
+subprocess.run("killall hyprsunset", shell=True)
+time.sleep(1)
+
+current_temperature = 0
 
 while True:
-    should_be_enabled = check_time()
-    print(should_be_enabled, enabled)
+    new_temperature = get_current_temperature()
 
-    if should_be_enabled and not enabled:
-        process = subprocess.Popen(
-            f'hyprsunset -t {temperature_night}',
-            shell=True,
-            start_new_session=True
-        )
-        enabled = should_be_enabled
-    if not should_be_enabled and enabled:
-        try:
-            process.send_signal(signal.SIGINT)
-        except:
-            pass
-        enabled = should_be_enabled
+    change_temperature(new_temperature, current_temperature)
+    current_temperature = new_temperature
 
-    time.sleep(5)
-temperature_night
+    time.sleep(10)
