@@ -1,8 +1,3 @@
-# Our website
-
-http://79.134.218.62:5000/
-Here you can find more details about the project
-
 # For users
 
 ## What is this project?
