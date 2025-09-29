@@ -122,7 +122,7 @@ git clone https://github.com/*username*/*repo_name*
 
 Using any code editor like VSCode or NeoVim change and test everything you want to.
 
-E.G. i want to use Chromium instead of Firefox. I open `modules/install_packages.py` file with VSCode, change 'firfox' to 'chromium' and save.
+E.G. i want to use Chromium instead of Firefox. I open `modules/install_packages.py` file with VSCode, change 'firefox' to 'chromium' and save. Also, in `/home/.config/hypr/hyprland.conf i change '$browser = firefox' to '$browser = chromium' and save.
 
 ### 4. Stage, commit and push
 
