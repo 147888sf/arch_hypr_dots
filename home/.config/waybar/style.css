@@ -1,4 +1,4 @@
-@import "$HOME/.cache/wal/colors-universal.css";
+@import "/home/vova_4104/.cache/wal/colors-universal.css";
 
 @define-color text rgba(255,255,255,1);
 @define-color accent @color1;
