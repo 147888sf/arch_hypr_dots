@@ -1,28 +1,25 @@
-@import "$HOME/.cache/wal/colors-universal.css";
-
-@define-color text rgba(255,255,255,1);
-@define-color accent @color1;
+@import "/home/vova_4104/.cache/wal/colors-universal.css";
 
 @define-color text rgba(255,255,255,1);
 @define-color accent @color1;
 
 * {
-    outline: none;
-    box-shadow: none;
-    border: none;
-    text-shadow: none;
-    border-radius: 0;
-    min-height: 0;
-    font-family: "JetBrains Mono";
-    font-weight: 500;
-    font-size: 15px;
-    padding: 0px;
-    background-clip: padding-box;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  text-shadow: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrains Mono";
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0px;
+  background-clip: padding-box;
 }
 
 window#waybar {
-    background: rgba(0,0,0,0.4);
-    border-radius: 0px 0px 16px 16px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0px 0px 8px 8px;
 }
 
 #clock,
@@ -32,57 +29,57 @@ window#waybar {
 #custom-swaync,
 #language,
 #pulseaudio {
-    margin: 6px 6px 6px 0px;
-    padding: 2px 8px;
-    min-width: 12px;
-    background-color: @accent;
-    border-radius: 6px 6px 10px 10px;
-    color: @text;
+  margin: 4px 4px 4px 0px;
+  padding: 1px 4px;
+  min-width: 12px;
+  background-color: @accent;
+  border-radius: 4px 4px 4px 4px;
+  color: @text;
 }
 
 #window {
-    margin: 6px 6px 6px 6px;
-    padding: 2px 8px;
-    color: @text;
+  margin: 6px 6px 6px 6px;
+  padding: 2px 8px;
+  color: @text;
 }
 
 #workspaces {
-    margin: 4px 0px 4px 4px;
-    padding: 2px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 6px 6px 12px 12px;
+  margin: 4px 4px 4px 4px;
+  padding: 0px 2px 0px 0px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px 4px 4px 4px;
 }
 
 #workspaces button {
-    padding: 0px 4px;
-    margin: 3px 2px;
-    background: @accent1;
-    color: @text;
-    transition: all 0.25s ease-out;
-    border-radius: 4px 4px 7px 7px;
+  padding: 0px 4px;
+  margin: 2px 0px 2px 2px;
+  background: @accent1;
+  color: @text;
+  transition: all 0.2s ease-out;
+  border-radius: 2px 2px 2px 2px;
 }
 
 #workspaces button:hover {
-    background: @accent;
-    min-width: 48px;
+  background: @accent;
+  /*min-width: 48px;*/
 }
 
 #workspaces button.active {
-    background: @accent;
-    min-width: 72px;
+  background: @accent;
+  min-width: 64px;
 }
 
 #custom-swaync {
-    padding-left: 7px;
-    padding-right: 9px;
+  padding-left: 7px;
+  padding-right: 9px;
 }
 
 #battery {
-    padding-left: 7px;
-    padding-right: 12px;
+  padding-left: 7px;
+  padding-right: 12px;
 }
 
 #custom-powermenu {
-    padding-left: 7px;
-    padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 10px;
 }

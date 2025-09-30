@@ -1,110 +1,106 @@
 {
-    "position": "top",
-    "layer": "bottom",
-    "spacing": 0,
-    "height": 36,
+  "position": "top",
+  "layer": "bottom",
+  "spacing": 0,
+  "height": 24,
 
-    "margin-top": 0,
-    "margin-right": 12,
-    "margin-bottom": 0,
-    "margin-left": 12,
+  "margin-top": 0,
+  "margin-right": 12,
+  "margin-bottom": 0,
+  "margin-left": 12,
 
-    "modules-left": [
-        
-    ],
+  "modules-left": [],
 
-    "modules-center": [
-    	"hyprland/workspaces"
-    ],
+  "modules-center": ["hyprland/workspaces"],
 
-    "modules-right": [
-        "tray",
-        "hyprland/language",
-        "custom/swaync",
-        "battery",
-        "pulseaudio",
-        "clock",
-        "custom/powermenu"
-    ],
-    
-    "battery": {
-        "format": "{icon}",
-        "format-icons": {
-            "default": ["", "", "", "", ""],
-            "charging": [""]
-        },
-        
-        "states": {
-            "warning": 20,
-            "critical": 10
-        },
-        
-        "tooltip-format": "Battery: {capacity}% ({time})",
-        "interval": 1,
-        "max-length": 25
+  "modules-right": [
+    "tray",
+    "hyprland/language",
+    "custom/swaync",
+    "battery",
+    "pulseaudio",
+    "clock",
+    "custom/powermenu"
+  ],
+
+  "battery": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": ["", "", "", "", ""],
+      "charging": [""]
     },
 
-    "hyprland/workspaces" : {
-        "on-click": "activate",
-        "all-outputs": true,
-        "format": "{}",
-        "persistent-workspaces": {
-            "*": 5
-        }
+    "states": {
+      "warning": 20,
+      "critical": 10
     },
 
-    "hyprland/language": {
-        "format": "{}",
-        "format-en": "󰌌 US",
-        "format-ru": "󰌌 RU"
-    },
+    "tooltip-format": "Battery: {capacity}% ({time})",
+    "interval": 1,
+    "max-length": 25
+  },
 
-    "tray": {
-        "spacing": 10,
-        "tooltip": false
-    },
-    
-    "pulseaudio": {
-        "scroll-step": 1,
-        "max-volume": 150,
-
-        "format": "{icon}{volume}%",
-        "format-muted": " {volume}%",
-        "format-icons": {
-            "default": ["  ", "  ", "  ", "  "],
-            "muted": ""
-        },
-        "nospacing": 1,
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "tooltip": false
-    },
-    
-    "network": {
-        "format-wifi": "󰖩",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰖪",
-        "interval": 1,
-        "tooltip": false,
-        "on-click": "nm-connection-editor"
-    },
-
-    "clock": {
-        "format": " {:%H:%M}",
-        "format-alt": "󰸗 {:%a %B %d %Y  %H:%M}",
-        "tooltip": false,
-        "interval": 1
-    },
-
-    "custom/swaync": {
-        "format": "",
-        "on-click": "swaync-client -t",
-        "tooltip": false
-    },
-    
-    "custom/powermenu": {
-        "format": "",
-        "on-click": "~/.config/rofi/powermenu.sh",
-        "tooltip": false
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "all-outputs": true,
+    "format": "{}",
+    "persistent-workspaces": {
+      "*": 5
     }
+  },
+
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "󰌌 US",
+    "format-ru": "󰌌 RU"
+  },
+
+  "tray": {
+    "spacing": 10,
+    "icon-size": 14,
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "scroll-step": 1,
+    "max-volume": 150,
+
+    "format": "{icon}{volume}%",
+    "format-icons": {
+      "default": "\uf027 ",
+      "muted": " "
+    },
+    "nospacing": 1,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false
+  },
+
+  "network": {
+    "format-wifi": "󰖩",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰖪",
+    "interval": 1,
+    "tooltip": false,
+    "on-click": "nm-connection-editor"
+  },
+
+  "clock": {
+    "format": " {:%H:%M}",
+    "format-alt": "󰸗 {:%a %B %d %Y  %H:%M}",
+    "tooltip": false,
+    "interval": 1
+  },
+
+  "custom/swaync": {
+    "format": "",
+    "on-click": "swaync-client -t",
+    "tooltip": false
+  },
+
+  "custom/powermenu": {
+    "format": "",
+    "on-click": "~/.config/rofi/powermenu.sh",
+    "tooltip": false
+  }
 }
