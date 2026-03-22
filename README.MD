@@ -1,5 +1,3 @@
-PROJECT IS OUTDATED! IT MAY NOT WORK AS IT SHOULD!
-
 # For users
 
 ## What is this project?
