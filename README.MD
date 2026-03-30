@@ -1,3 +1,15 @@
+# Project archived
+
+This project is now **archived** and is no longer maintained.
+
+I am currently working on a new and improved version that will replace this repository. It aims to be mmore efficent, feature-rich, better architected and etc.
+
+Than you to everyoe who suppoorted this project, contributed the code, or provided feedback. Your support has been invaluable!
+
+
+
+
+
 # For users
 
 ## What is this project?
